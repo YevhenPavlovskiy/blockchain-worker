@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blockchain-worker
+spec:
+  selector:
+    matchLabels:
+      app: blockchain-worker
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: blockchain-worker
+    spec:
+      containers:
+      - name: blockchain-worker
+        image: blockchain_worker
+        ports:
+        - containerPort: 4002
+        imagePullPolicy: Never
